@@ -1,18 +1,20 @@
-import './globals.css'
+import Drawer from "../components/drawer";
+import "./globals.css";
+import Header from "./header";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
+    <html lang="en" data-theme="fantasy">
       <head />
-      <body>{children}</body>
+      <body>
+        <Header />
+        <Drawer />
+        <main>{children}</main>
+      </body>
     </html>
-  )
+  );
 }
