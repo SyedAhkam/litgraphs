@@ -13,6 +13,7 @@ specifiers:
   daisyui: ^2.46.0
   eslint: 8.30.0
   eslint-config-next: 13.0.7
+  fuse.js: ^6.6.2
   graphology: ^0.25.1
   graphology-layout: ^0.6.1
   graphology-layout-forceatlas2: ^0.10.1
@@ -38,6 +39,7 @@ dependencies:
   daisyui: 2.46.0_r4gnkvssmvyxmi2wmat5xbx36a
   eslint: 8.30.0
   eslint-config-next: 13.0.7_lzzuuodtsqwxnvqeq4g4likcqa
+  fuse.js: 6.6.2
   graphology: 0.25.1_graphology-types@0.24.5
   graphology-layout: 0.6.1_graphology-types@0.24.5
   graphology-layout-forceatlas2: 0.10.1_graphology-types@0.24.5
@@ -1281,6 +1283,11 @@ packages:
 
   /functions-have-names/1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
+    dev: false
+
+  /fuse.js/6.6.2:
+    resolution: {integrity: sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==}
+    engines: {node: '>=10'}
     dev: false
 
   /get-intrinsic/1.1.3:

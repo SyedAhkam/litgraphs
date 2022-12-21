@@ -19,6 +19,7 @@
     "daisyui": "^2.46.0",
     "eslint": "8.30.0",
     "eslint-config-next": "13.0.7",
+    "fuse.js": "^6.6.2",
     "graphology": "^0.25.1",
     "graphology-layout": "^0.6.1",
     "graphology-layout-forceatlas2": "^0.10.1",

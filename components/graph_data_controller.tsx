@@ -21,9 +21,16 @@ export default function GraphDataController({ data }) {
     }
 
     // Add edges
-    data.edges.forEach(([source, target]) =>
-      graph.addEdge(source, target, { size: 1 })
-    );
+    // data.edges.forEach(([source, target]) =>
+    //   graph.addEdge(source, target, { color: "#ccc" })
+    // );
+    for (const edge of data.edges) {
+      try {
+        graph.addEdge(edge[0], edge[1], { color: "#ccc" });
+      } catch (e) {
+        console.log(e);
+      }
+    }
 
     // Use degrees as node sizes:
     const scores = graph
