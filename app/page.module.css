@@ -1,11 +1,3 @@
-.flow {
-  flex-grow: 1;
-  font-size: 12px;
-}
-
-.customNode {
-  border: 1px solid #555;
-  padding: 10px;
-  width: 200px;
-  border-radius: 5px;
+.react-sigma {
+ background: #1e1e;
 }
