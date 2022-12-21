@@ -1,4 +1,3 @@
-import Drawer from "../components/drawer";
 import "./globals.css";
 import Header from "./header";
 
