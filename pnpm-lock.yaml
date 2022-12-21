@@ -14,6 +14,7 @@ specifiers:
   postcss: ^8.4.20
   react: 18.2.0
   react-dom: 18.2.0
+  react-sigma: ^1.2.35
   tailwindcss: ^3.2.4
   typescript: 4.9.4
 
@@ -28,6 +29,7 @@ dependencies:
   next: 13.0.7_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-sigma: 1.2.35_biqbaboplfbrettd7655fr4n2y
   typescript: 4.9.4
 
 devDependencies:
@@ -1950,6 +1952,17 @@ packages:
 
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+    dev: false
+
+  /react-sigma/1.2.35_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-amjKjaQusefDp8dD9er3wE/lfubSQT5fJSRF4SsS0LjxRue4bpSapAQ1WpmSM6nQEgawbrKel+bQBmatl7MAIw==}
+    engines: {node: '>=8.0'}
+    peerDependencies:
+      react: '>=15.3'
+      react-dom: '>=15.3'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react/18.2.0:

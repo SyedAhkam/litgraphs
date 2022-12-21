@@ -1,4 +1,14 @@
 import SearchBar from "../components/search_bar";
+import Viewport from "../components/viewport";
+import styles from "./page.module.css";
+
+const data = {
+  nodes: [{ id: "Harry" }, { id: "Sally" }, { id: "Alice" }],
+  links: [
+    { source: "Harry", target: "Sally" },
+    { source: "Harry", target: "Alice" },
+  ],
+};
 
 export default function Home() {
   return (
@@ -9,7 +19,9 @@ export default function Home() {
 
         <SearchBar />
       </div>
-      <div className="grow bg-base-300"></div>
+      <div className="grow bg-base-300">
+        <Viewport data={data} />
+      </div>
     </div>
   );
 }
