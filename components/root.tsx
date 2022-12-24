@@ -21,6 +21,8 @@ import {
 } from "react-icons/bs";
 import { BiReset } from "react-icons/bi";
 import { GrView } from "react-icons/gr";
+import SelectedNodeDetail from "./selected_node_detail";
+import useSelectedNode from "../hooks/useSelectedNode";
 
 export default function Root({ data }) {
   const [dataReady, setDataReady] = useState(false);
@@ -39,6 +41,10 @@ export default function Root({ data }) {
             graph.forEachNode((node) => {
               graph.setAttribute("hiddenNeighbors", false);
               graph.setNodeAttribute(node, "hidden", false);
+
+              // Unselect the node
+              // FIXME: the hook state is not updated
+              graph.setNodeAttribute(node, "selected", false);
             });
           }}
         >
@@ -84,6 +90,9 @@ export default function Root({ data }) {
         </LayoutForceAtlas2Control>
         <UnhideControl />
       </ControlsContainer>
+      <div className="absolute top-2 right-2">
+        <SelectedNodeDetail />
+      </div>
     </SigmaContainer>
   );
 }
