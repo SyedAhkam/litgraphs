@@ -3,6 +3,7 @@
 import { useLoadGraph } from "@react-sigma/core";
 import { DirectedGraph } from "graphology";
 import { useEffect } from "react";
+import { DEFAULT_EDGE_COLOR, DEFAULT_NODE_COLOR } from "../constants";
 
 export default function GraphDataController({ data }) {
   const loadGraph = useLoadGraph();
@@ -14,19 +15,18 @@ export default function GraphDataController({ data }) {
     const graph = new DirectedGraph();
 
     // Add nodes
+
     for (const node of data.nodes) {
       graph.addNode(node.key, {
         ...node,
+        color: DEFAULT_NODE_COLOR,
       });
     }
 
     // Add edges
-    // data.edges.forEach(([source, target]) =>
-    //   graph.addEdge(source, target, { color: "#ccc" })
-    // );
     for (const edge of data.edges) {
       try {
-        graph.addEdge(edge[0], edge[1], { color: "#ccc" });
+        graph.addEdge(edge[0], edge[1], { color: DEFAULT_EDGE_COLOR });
       } catch (e) {
         console.log(e);
       }

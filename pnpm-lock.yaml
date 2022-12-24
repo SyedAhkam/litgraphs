@@ -5,6 +5,8 @@ specifiers:
   '@react-sigma/core': ^3.1.0
   '@react-sigma/layout-circular': ^3.1.0
   '@react-sigma/layout-forceatlas2': ^3.1.0
+  '@react-sigma/layout-noverlap': ^3.1.0
+  '@react-sigma/layout-random': ^3.1.0
   '@tailwindcss/typography': ^0.5.8
   '@types/node': 18.11.17
   '@types/react': 18.0.26
@@ -17,12 +19,14 @@ specifiers:
   graphology: ^0.25.1
   graphology-layout: ^0.6.1
   graphology-layout-forceatlas2: ^0.10.1
+  graphology-layout-noverlap: ^0.4.2
   graphology-types: ^0.24.5
   lodash: ^4.17.21
   next: 13.0.7
   postcss: ^8.4.20
   react: 18.2.0
   react-dom: 18.2.0
+  react-icons: ^4.7.1
   react-sigma: ^1.2.35
   sigma: ^2.4.0
   tailwindcss: ^3.2.4
@@ -33,6 +37,8 @@ dependencies:
   '@react-sigma/core': 3.1.0_afiwt32vmvht5c2fqthhxlkxt4
   '@react-sigma/layout-circular': 3.1.0_d47pn43q3h5dmafriuvq3hm3ye
   '@react-sigma/layout-forceatlas2': 3.1.0_2oce4rceqna6nsjin2hapiv35i
+  '@react-sigma/layout-noverlap': 3.1.0_fjlx6bruj25x24udqmn552uaiu
+  '@react-sigma/layout-random': 3.1.0_d47pn43q3h5dmafriuvq3hm3ye
   '@types/node': 18.11.17
   '@types/react': 18.0.26
   '@types/react-dom': 18.0.9
@@ -43,11 +49,13 @@ dependencies:
   graphology: 0.25.1_graphology-types@0.24.5
   graphology-layout: 0.6.1_graphology-types@0.24.5
   graphology-layout-forceatlas2: 0.10.1_graphology-types@0.24.5
+  graphology-layout-noverlap: 0.4.2_graphology-types@0.24.5
   graphology-types: 0.24.5
   lodash: 4.17.21
   next: 13.0.7_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-icons: 4.7.1_react@18.2.0
   react-sigma: 1.2.35_biqbaboplfbrettd7655fr4n2y
   sigma: 2.4.0_graphology-types@0.24.5
   typescript: 4.9.4
@@ -319,6 +327,34 @@ packages:
     dependencies:
       '@react-sigma/layout-core': 3.1.0_afiwt32vmvht5c2fqthhxlkxt4
       graphology-layout-forceatlas2: 0.10.1_graphology-types@0.24.5
+    transitivePeerDependencies:
+      - graphology
+      - lodash
+      - react
+      - sigma
+    dev: false
+
+  /@react-sigma/layout-noverlap/3.1.0_fjlx6bruj25x24udqmn552uaiu:
+    resolution: {integrity: sha512-dF3/OFKPyGReN0RVlL2iqYJyIlckGqI8U9HcgwbtOH2h458Da+KlldiwQ9Ll+OmQKz5G1ICldCqD8Ug2md8JCQ==}
+    peerDependencies:
+      graphology-layout-noverlap: ^0.4.2
+    dependencies:
+      '@react-sigma/layout-core': 3.1.0_afiwt32vmvht5c2fqthhxlkxt4
+      graphology-layout-noverlap: 0.4.2_graphology-types@0.24.5
+    transitivePeerDependencies:
+      - graphology
+      - lodash
+      - react
+      - sigma
+    dev: false
+
+  /@react-sigma/layout-random/3.1.0_d47pn43q3h5dmafriuvq3hm3ye:
+    resolution: {integrity: sha512-Beo2rmDrgKiBgCnLlFLJTNeF+KCeX8l9y/kf4MEIRHm70eN6CWMwlrOqRF+EmfK1GpootNnrjPusc3Op8HN/Sw==}
+    peerDependencies:
+      graphology-layout: ^0.6.1
+    dependencies:
+      '@react-sigma/layout-core': 3.1.0_afiwt32vmvht5c2fqthhxlkxt4
+      graphology-layout: 0.6.1_graphology-types@0.24.5
     transitivePeerDependencies:
       - graphology
       - lodash
@@ -1405,6 +1441,15 @@ packages:
       graphology-utils: 2.5.2_graphology-types@0.24.5
     dev: false
 
+  /graphology-layout-noverlap/0.4.2_graphology-types@0.24.5:
+    resolution: {integrity: sha512-13WwZSx96zim6l1dfZONcqLh3oqyRcjIBsqz2c2iJ3ohgs3605IDWjldH41Gnhh462xGB1j6VGmuGhZ2FKISXA==}
+    peerDependencies:
+      graphology-types: '>=0.19.0'
+    dependencies:
+      graphology-types: 0.24.5
+      graphology-utils: 2.5.2_graphology-types@0.24.5
+    dev: false
+
   /graphology-layout/0.6.1_graphology-types@0.24.5:
     resolution: {integrity: sha512-m9aMvbd0uDPffUCFPng5ibRkb2pmfNvdKjQWeZrf71RS1aOoat5874+DcyNfMeCT4aQguKC7Lj9eCbqZj/h8Ag==}
     peerDependencies:
@@ -2096,6 +2141,14 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-icons/4.7.1_react@18.2.0:
+    resolution: {integrity: sha512-yHd3oKGMgm7zxo3EA7H2n7vxSoiGmHk5t6Ou4bXsfcgWyhfDKMpyKfhHR6Bjnn63c+YXBLBPUql9H4wPJM6sXw==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-is/16.13.1:
