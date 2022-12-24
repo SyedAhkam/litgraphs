@@ -36,6 +36,27 @@ export default function EventHandler() {
           graph.setNodeAttribute(neighbor, "color", DEFAULT_NODE_COLOR);
         });
       },
+      downNode: (e) => {
+        let clickedNode = e.node;
+
+        // Show all nodes if they are hidden
+        if (graph.getAttribute("hiddenNeighbors")) {
+          graph.setAttribute("hiddenNeighbors", false);
+          graph.forEachNode((node) => {
+            graph.setNodeAttribute(node, "hidden", false);
+          });
+          return;
+        }
+
+        // Hide all except the clicked node and neighbors
+        graph.setAttribute("hiddenNeighbors", true);
+        graph.forEachNode((node) => {
+          if (node == clickedNode) return;
+          if (graph.areNeighbors(node, clickedNode)) return;
+
+          graph.setNodeAttribute(node, "hidden", true);
+        });
+      },
     });
   }, [registerEvents]);
 

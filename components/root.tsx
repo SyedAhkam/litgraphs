@@ -2,6 +2,7 @@ import {
   ControlsContainer,
   FullScreenControl,
   SigmaContainer,
+  useSigma,
   ZoomControl,
 } from "@react-sigma/core";
 import { useEffect, useState } from "react";
@@ -19,11 +20,33 @@ import {
   BsZoomOut,
 } from "react-icons/bs";
 import { BiReset } from "react-icons/bi";
+import { GrView } from "react-icons/gr";
 
 export default function Root({ data }) {
   const [dataReady, setDataReady] = useState(false);
 
   if (data == null) return <p>Loading...</p>;
+
+  const UnhideControl = () => {
+    const sigma = useSigma();
+
+    return (
+      <div className="react-sigma-control">
+        <button
+          title="Unhide all nodes and edges"
+          onClick={() => {
+            let graph = sigma.getGraph();
+            graph.forEachNode((node) => {
+              graph.setAttribute("hiddenNeighbors", false);
+              graph.setNodeAttribute(node, "hidden", false);
+            });
+          }}
+        >
+          <GrView />
+        </button>
+      </div>
+    );
+  };
 
   return (
     <SigmaContainer
@@ -45,7 +68,7 @@ export default function Root({ data }) {
     >
       <GraphDataController data={data} />
       <EventHandler />
-      <ControlsContainer position="top-left">
+      <ControlsContainer position="top-left" className="mx-2 p-2 rounded">
         <ZoomControl>
           <BsZoomIn />
           <BsZoomOut />
@@ -59,6 +82,7 @@ export default function Root({ data }) {
           <BsPlay />
           <BsStop />
         </LayoutForceAtlas2Control>
+        <UnhideControl />
       </ControlsContainer>
     </SigmaContainer>
   );
