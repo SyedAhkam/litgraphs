@@ -23,6 +23,10 @@ export default function EventHandler() {
           // Activate the labels of the neighboring nodes
           // graph.setNodeAttribute(neighbor, "label", neighbor);
           // graph.setAttribute("renderLabels", true);
+
+          // Display the edges connected between the neighbors
+          let edge = graph.edge(node, neighbor) ?? graph.edge(neighbor, node);
+          graph.setEdgeAttribute(edge, "hidden", false);
         });
       },
       leaveNode: (e) => {
@@ -31,13 +35,33 @@ export default function EventHandler() {
         // Un-color the node
         graph.setNodeAttribute(node, "color", DEFAULT_NODE_COLOR);
 
-        // Un-color the neighboring nodes
         graph.forEachNeighbor(node, (neighbor) => {
+          // Un-color the neighboring nodes
           graph.setNodeAttribute(neighbor, "color", DEFAULT_NODE_COLOR);
+
+          // Hide the edges while leaving
+          let edge = graph.edge(node, neighbor) ?? graph.edge(neighbor, node);
+          if (graph.getEdgeAttribute(edge, "activeEdge") == true) return;
+
+          graph.setEdgeAttribute(edge, "hidden", true);
         });
       },
       downNode: (e) => {
         let clickedNode = e.node;
+
+        // Mark neighbor edges visible
+        graph.forEachNeighbor(clickedNode, (neighbor) => {
+          let edge = graph.edge(clickedNode, neighbor) ?? graph.edge(neighbor, clickedNode);
+
+          // Reset if already marked active
+          if (graph.getEdgeAttribute(edge, "activeEdge") === true) {
+            graph.setEdgeAttribute(edge, "activeEdge", false);
+            return;
+          }
+
+          graph.setEdgeAttribute(edge, "hidden", false);
+          graph.setEdgeAttribute(edge, "activeEdge", true);
+        })
 
         // Show all nodes if they are hidden
         if (graph.getAttribute("hiddenNeighbors")) {
@@ -56,9 +80,10 @@ export default function EventHandler() {
 
           graph.setNodeAttribute(node, "hidden", true);
         });
+
       },
     });
-  }, [registerEvents]);
+  }, [registerEvents, sigma]);
 
   return null;
 }

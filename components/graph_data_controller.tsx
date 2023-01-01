@@ -4,6 +4,7 @@ import { useLoadGraph } from "@react-sigma/core";
 import { DirectedGraph } from "graphology";
 import { useEffect } from "react";
 import { DEFAULT_EDGE_COLOR, DEFAULT_NODE_COLOR } from "../constants";
+import { randomSaturatedColor } from "../utils";
 
 export default function GraphDataController({ data }) {
   const loadGraph = useLoadGraph();
@@ -26,7 +27,7 @@ export default function GraphDataController({ data }) {
     // Add edges
     for (const edge of data.edges) {
       try {
-        graph.addEdge(edge[0], edge[1], { color: DEFAULT_EDGE_COLOR });
+        graph.addEdge(edge[0], edge[1], { color: DEFAULT_EDGE_COLOR, hidden: true }); // hidden by default
       } catch (e) {
         console.log(e);
       }

@@ -5,11 +5,10 @@ import {
   useSigma,
   ZoomControl,
 } from "@react-sigma/core";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import GraphDataController from "./graph_data_controller";
 import "@react-sigma/core/lib/react-sigma.min.css";
 import { LayoutForceAtlas2Control } from "@react-sigma/layout-forceatlas2";
-import { LayoutNoverlapControl } from "@react-sigma/layout-noverlap";
 import EventHandler from "./event_handler";
 import {
   BsFullscreen,
@@ -22,20 +21,19 @@ import {
 import { BiReset } from "react-icons/bi";
 import { GrView } from "react-icons/gr";
 import SelectedNodeDetail from "./selected_node_detail";
-import useSelectedNode from "../hooks/useSelectedNode";
 
-export default function Root({ data }) {
+export default function Root({ data }: any) {
   const [dataReady, setDataReady] = useState(false);
 
   if (data == null) return <p>Loading...</p>;
 
-  const UnhideControl = () => {
+  const ResetControl = () => {
     const sigma = useSigma();
 
     return (
       <div className="react-sigma-control">
         <button
-          title="Unhide all nodes and edges"
+          title="Reset the viewport"
           onClick={() => {
             let graph = sigma.getGraph();
             graph.forEachNode((node) => {
@@ -46,6 +44,11 @@ export default function Root({ data }) {
               // FIXME: the hook state is not updated
               graph.setNodeAttribute(node, "selected", false);
             });
+
+            graph.forEachEdge((edge) => {
+              graph.setEdgeAttribute(edge, "hidden", true);
+              graph.setEdgeAttribute(edge, "activeEdge", false);
+            })
           }}
         >
           <GrView />
@@ -88,7 +91,7 @@ export default function Root({ data }) {
           <BsPlay />
           <BsStop />
         </LayoutForceAtlas2Control>
-        <UnhideControl />
+        <ResetControl />
       </ControlsContainer>
       <div className="absolute top-2 right-2">
         <SelectedNodeDetail />

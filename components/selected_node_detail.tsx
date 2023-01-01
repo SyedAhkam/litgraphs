@@ -6,14 +6,6 @@ export default function SelectedNodeDetail() {
   const sigma = useSigma();
   const selectedNode = useSelectedNode();
 
-  useEffect(() => {
-    if (selectedNode == "") return;
-
-    let graph = sigma.getGraph();
-    let attributes = graph.getNodeAttributes(selectedNode);
-    console.log(attributes);
-  }, [selectedNode, sigma]);
-
   const getAttribute = (attr: string) =>
     sigma.getGraph().getNodeAttribute(selectedNode, attr);
 
